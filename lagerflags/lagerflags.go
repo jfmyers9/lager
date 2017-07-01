@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/spf13/pflag"
+
 	"code.cloudfoundry.org/lager"
 )
 
@@ -31,6 +33,16 @@ func AddFlags(flagSet *flag.FlagSet) {
 	flagSet.StringVar(
 		&minLogLevel,
 		"logLevel",
+		string(INFO),
+		"log level: debug, info, error or fatal",
+	)
+}
+
+func AddPFlags(flagSet *pflag.FlagSet) {
+	flagSet.StringVarP(
+		&minLogLevel,
+		"logLevel",
+		"l",
 		string(INFO),
 		"log level: debug, info, error or fatal",
 	)
